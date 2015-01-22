@@ -36,12 +36,15 @@ Just like setting up a standard MN. Send exactly 1,000 DRK to each new address c
 
 ## Create Private Keys
 
-Open your QT Wallet.
+You can use your existing private keys, or create new keys.
 
-You need to create a private key for each of the new wallet addresses created above. This is a simple as dumpprivkey.
+### New Keys
 
-```walletpassphrase [your_wallet_passphrase] 600```
-```dumpprivkey [wallet_address_from_above]```
+Open your QT Wallet and go to console (from the menu select Tools => Debug Console)
+
+Issue the following:
+
+```masternode genkey```
 
 Close your QT Wallet.
 
@@ -55,13 +58,13 @@ Copy the private key and correspondig collateral output transaction that holds t
 
 ### Get the collateral output
 
-Go to one of the block chain explorers. Like http://explorer.darkcoin.io/chain/Darkcoin
+Open your QT Wallet and go to console (from the menu select Tools => Debug Console)
 
-Enter the wallet address for your new node into the search box.
+Issue the following:
 
-You should see a list of one (or more) transactions. Click the transaction line item that displays the 1,000 dark you sent to the address.
+```masternode outputs```
 
-Copy the hash, and note the index. The has is your collateral output that will be used in the masternode.conf file
+Make note of the hash (which is your collaterla_output) and index.
 
 ### Enter your MasterNode details into your masternode.conf file
 
@@ -81,7 +84,7 @@ You should already have a darkcoin.conf file from your exisiting node. I simply 
 ```sudo nano .darkcoin/darkcoin.conf```
 
 ### Edit the masternodeprivkey
-Since you generated a new private key for your new wallet address, you will need to update the masternodeprivkey value in your remote darkcoin.conf file.
+If you generated a new private key for your new wallet address, you will need to update the masternodeprivkey value in your remote darkcoin.conf file.
 
 ## Start your MasterNodes
 
