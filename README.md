@@ -1,4 +1,4 @@
-#StartMany Setup Guid
+#StartMany Setup Guide
 
 ## Create New Wallet
 Close your QT wallet.
