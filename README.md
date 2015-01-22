@@ -3,7 +3,7 @@
 ## Create New Wallet
 Close your QT wallet.
 
-Moving your existint wallet.dat (and darkcoin.conf if you have one) into a backup directory.
+Move your existing wallet.dat (and darkcoin.conf if you have one) into a backup directory.
 
 Restart the QT wallet. Doing so will create a new wallet.dat.
 
