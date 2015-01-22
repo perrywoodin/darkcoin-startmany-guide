@@ -84,7 +84,7 @@ You should already have a darkcoin.conf file from your exisiting node. I simply 
 ```sudo nano .darkcoin/darkcoin.conf```
 
 ### Edit the masternodeprivkey
-If you generated a new private key for your new wallet address, you will need to update the masternodeprivkey value in your remote darkcoin.conf file.
+If you generated a new private key, you will need to update the masternodeprivkey value in your remote darkcoin.conf file.
 
 ## Start your MasterNodes
 
