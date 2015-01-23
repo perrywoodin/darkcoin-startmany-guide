@@ -1,3 +1,5 @@
+*NOTE: This guide is a work in progress as I figure out the many ways to setup a wallet for support of start-many. I will remove this line of text once this guide is solid.*
+
 #StartMany Setup Guide
 
 ## Create New Wallet
