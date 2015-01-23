@@ -2,14 +2,49 @@
 
 #StartMany Setup Guide
 
-## Create New Wallet
-Close your QT wallet.
+## Two Options for Setting up your Wallet
+There are many ways to setup a wallet to support start-many. This guide will walk through.
 
-Move your existing wallet.dat (and darkcoin.conf if you have one) into a backup directory.
+1. Importing an existing wallet (recommended if you are consolidating wallets).
+2. Sending 1,000 DRK to new wallet addresses.
 
-Restart the QT wallet. Doing so will create a new wallet.dat.
+## Option 1. Importing an existing wallet
 
-## Create New Wallet Addresses
+This is the way to go if you are consolidating multiple wallets into one that supports start-many. 
+
+### From your single-instance MasterNode Wallet
+
+Open your QT Wallet and go to console (from the menu select Tools => Debug Console)
+
+Dump the private key from your MasterNode's pulic key.
+
+```
+walletpassphrase [your_wallet_passphrase] 600
+dumpprivkey [mn_public_key]
+```
+
+Copy the resulting priviate key. You'll use it in the next step.
+
+### From your multi-instance MasterNode Wallet
+
+Open your QT Wallet and go to console (from the menu select Tools => Debug Console)
+
+Import the private key from the step above.
+
+```
+walletpassphrase [your_wallet_passphrase] 600
+importprivkey [single_instance_private_key]
+```
+
+The wallet will re-scan and you will see your available balance increase by the amount that was in the imported wallet.
+
+Skip Option 2. and go to Create masternode.conf file
+
+## Option 2. Starting with a new wallet
+
+If you used Option 1 above, then you can skip down to Create masternode.conf file.
+
+### Create New Wallet Addresses
 
 1. Open the QT Wallet.
 2. Click the Receive tab.
@@ -23,24 +58,11 @@ Create a new wallet address for each MasterNode.
 
 Close your QT Wallet.
 
-## Send 1,000 DRK to New Addresses
-
-### Shut down your MasterNode
-I don't know if this step is entirely necessary, but before I move 1,000 DRK from my old MasterNode to a new address, I shut down the daemon.
-
-Log into your MasterNode server and:
-
-```darkcoind stop```
-
-### Send funds from old MasterNode to new wallet address
+### Send 1,000 DRK to New Addresses
 
 Just like setting up a standard MN. Send exactly 1,000 DRK to each new address created above.
 
-## Create Private Keys
-
-You can use your existing private keys, or create new keys.
-
-### New Keys
+### Create New Keys
 
 Open your QT Wallet and go to console (from the menu select Tools => Debug Console)
 
@@ -57,6 +79,8 @@ Remember... this is local. Make sure your QT is not running.
 Create the masternode.conf file in the same directory as your wallet.dat.
 
 Copy the private key and correspondig collateral output transaction that holds the 1K DRK.
+
+The private key may be an existing key from Option 1, or a newly generated key from Option 2. 
 
 ### Get the collateral output
 
@@ -75,13 +99,15 @@ mn01 127.0.0.1:9999 priv_key collateral_output 0
 mn02 127.0.0.2:9999 priv_key collateral_output 0
 ```
 
-## Create a darkcoin.conf file
+## What about the darkcoin.conf file?
 
-Remember... this is local. Make sure your QT is not running.
-
-You should already have a darkcoin.conf file from your exisiting node. I simply copied it into my new wallet.
+If you are using a masternode.conf file you no longer need the darkcoin.conf file. The exception is if you need custom settings (thanks oblox). 
 
 ## Update darkcoin.conf on server
+
+If you generated a new private key, you will need to update the remote darkcoin.conf files.
+
+Shut down the daemon and then edit the file.
 
 ```sudo nano .darkcoin/darkcoin.conf```
 
@@ -92,13 +118,13 @@ If you generated a new private key, you will need to update the masternodeprivke
 
 ### Remote
 
-Start your remote daemon as you normally would. 
+If your remote server is not running, start your remote daemon as you normally would. 
 
 I usually confirm that remote is on the correct block by issuing:
 
 ```darkcoind getinfo```
 
-And comparing with the official explorer at http://explorer.darkcoin.io/chain/Darkcoin
+And compare with the official explorer at http://explorer.darkcoin.io/chain/Darkcoin
 
 ### Local
 
