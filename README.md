@@ -3,7 +3,7 @@
 #StartMany Setup Guide
 
 ## Two Options for Setting up your Wallet
-There are many ways to setup a wallet to support start-many. This guide will walk through.
+There are many ways to setup a wallet to support start-many. This guide will walk through two of them.
 
 1. Importing an existing wallet (recommended if you are consolidating wallets).
 2. Sending 1,000 DRK to new wallet addresses.
