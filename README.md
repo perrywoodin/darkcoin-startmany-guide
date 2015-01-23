@@ -98,7 +98,7 @@ Make note of the hash (which is your collaterla_output) and index.
 The new masternode.conf format consists of a space seperated text file. Each line consisting of an alias, IP address followed by port, masternode private key, collateral output transaction id and collateral output index.
 
 ```
-alias ipaddress masternode_private_key collateral_output collateral_output_index
+alias ipaddress:port masternode_private_key collateral_output collateral_output_index
 ```
 
 Example:
